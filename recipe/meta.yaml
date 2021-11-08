@@ -18,8 +18,8 @@ build:
     # Travis ppc64le doesn't have enough memory to build in more than one thread.
     - export CMAKE_BUILD_PARALLEL_LEVEL=${CPU_COUNT}  # [not (linux and ppc64le)]
     - export CMAKE_BUILD_PARALLEL_LEVEL=1             # [linux and ppc64le]
-    - ./install_python.sh                             # [unix]
-    - ./install_python.bat                            # [win]
+    - ./recipe/install_python.sh                             # [unix]
+    - ./recipe/install_python.bat                            # [win]
 
 requirements:
   build:
