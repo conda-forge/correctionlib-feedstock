@@ -18,25 +18,16 @@ build:
     # Travis ppc64le doesn't have enough memory to build in more than one thread.
     - export CMAKE_BUILD_PARALLEL_LEVEL=${CPU_COUNT}  # [not (linux and ppc64le)]
     - export CMAKE_BUILD_PARALLEL_LEVEL=1             # [linux and ppc64le]
-    - echo "import os                                                                # [unix]
-    - args = []                                                                      # [unix]
-    - if 'CMAKE_ARGS' in os.environ:                                                 # [unix]
-    -     args = list(filter(None, os.environ['CMAKE_ARGS'].split(' ')))             # [unix]
-    - args = [arg for arg in args if len(arg.split('DCMAKE_INSTALL_PREFIX')) == 1]   # [unix]
-    - print(' '.join(args))                                                          # [unix]
-    - " > my_cmake_args.py                                                           # [unix]
-    - {{ PYTHON }} setup.py install --build-type Release `python my_cmake_args.py`   # [unix]
-    - echo import os > my_cmake_args.py                                                                      # [win]
-    - echo args = [] >> my_cmake_args.py                                                                     # [win]
-    - echo if 'CMAKE_ARGS' in os.environ: >> my_cmake_args.py                                                # [win]
-    - echo     args = list(filter(None, os.environ['CMAKE_ARGS'].split(' '))) >> my_cmake_args.py            # [win]
-    - echo args = [arg for arg in args if len(arg.split('DCMAKE_INSTALL_PREFIX')) == 1] >> my_cmake_args.py  # [win]
-    - echo print(' '.join(args)) >> my_cmake_args.py                                                         # [win]
-    - python my_cmake_args.py > mytemp.txt                                                                   # [win]
-    - {{ PYTHON }} setup.py install --build-type Release < mytemp.txt                                        # [win]
+    - echo "import os" > my_cmake_args.py
+    - echo "args = []" >> my_cmake_args.py
+    - echo "if 'CMAKE_ARGS' in os.environ:" >> my_cmake_args.py
+    - echo "    args = list(filter(None, os.environ['CMAKE_ARGS'].split(' ')))" >> my_cmake_args.py
+    - echo "args = [arg for arg in args if len(arg.split('DCMAKE_INSTALL_PREFIX')) == 1]" >> my_cmake_args.py
+    - echo "print(' '.join(args))" >> my_cmake_args.py
+    - {{ PYTHON }} setup.py install --single-version-externally-managed --record=record.txt --build-type Release `{{ PYTHON }} my_cmake_args.py`  # [unix]
+    - {{ PYTHON }} my_cmake_args.py > mytemp.txt                                                                                                  # [win]
+    - {{ PYTHON }} setup.py install --single-version-externally-managed --record=record.txt --build-type Release < mytemp.txt                     # [win]
 
-
-$PYTHON setup.py install --build-type Release `python my_cmake_args.py`
 
 requirements:
   build:
