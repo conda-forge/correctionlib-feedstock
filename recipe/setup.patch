@@ -1,0 +1,19 @@
+--- setup.py	2021-11-09 13:20:01.428894100 -0600
++++ setup.py.1	2021-11-09 13:22:22.588894100 -0600
+@@ -8,9 +8,15 @@
+ from setuptools_scm import get_version
+ from skbuild import setup
+ 
++import os
++cmake_args = [f"-DCORRECTIONLIB_VERSION:STRING={get_version()}"]
++if "CMAKE_ARGS" in os.environ:
++    cmake_args += os.environ["CMAKE_ARGS"].split(" ")
++cmake_args = [arg for arg in cmake_args if len(arg.split("DCMAKE_INSTALL_PREFIX")) == 1]
++    
+ setup(
+     packages=find_packages(where="src"),
+     package_dir={"": "src"},
+     cmake_install_dir="src",
+-    cmake_args=[f"-DCORRECTIONLIB_VERSION:STRING={get_version()}"],
++    cmake_args=cmake_args,
+ )
