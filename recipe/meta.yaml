@@ -42,6 +42,7 @@ requirements:
     - rich
     - typing  # [py<35]
     - typing-extensions  # [py<38]
+    - scipy
 
 test:
   imports:
