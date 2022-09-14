@@ -1,5 +1,5 @@
 {% set name = "correctionlib" %}
-{% set version = "2.1.0" %}
+{% set version = "2.2.2" %}
 
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/correctionlib-{{ version }}.tar.gz
-  sha256: edf79644dc1d9d94f12b4b45366331e5da3f1e21d4cbcd3bb8b0d4b1421b0c44
+  sha256: 8777a082d3cb485ffc4a1439c73a30656d4a4a5708fd806c3eede5b12cb31e4c
   patches: setup.patch
 
 build:
