@@ -17,3 +17,6 @@ test: native_and_emulated
 test_on_native_only: true
 conda_build:
   pkg_format: '2'
+bot:
+  # https://conda-forge.org/docs/maintainer/conda_forge_yml.html#bot
+  inspection: update-all
