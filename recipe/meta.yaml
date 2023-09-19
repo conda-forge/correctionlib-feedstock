@@ -12,7 +12,7 @@ source:
   patches: setup.patch
 
 build:
-  number: 0
+  number: 1
   entry_points:
     - correction = correctionlib.cli:main
   script:
@@ -35,14 +35,7 @@ requirements:
     - setuptools-scm
     - scikit-build
   run:
-    - ghapi
-    - nox
     - packaging
-    - pandas
-    - requests
-    - scikit-build
-    - setuptools_scm
-    - spectrum
     - dataclasses  # [py<37]
     - numpy >=1.13.3
     - pydantic <2,>=1.7.3
