@@ -19,4 +19,4 @@ conda_build:
   pkg_format: '2'
 bot:
   # https://conda-forge.org/docs/maintainer/conda_forge_yml.html#bot
-  inspection: update-all
+  inspection: hint
