@@ -12,7 +12,7 @@ source:
   patches: setup.patch
 
 build:
-  number: 1
+  number: 2
   entry_points:
     - correction = correctionlib.cli:main
   script:
@@ -34,6 +34,7 @@ requirements:
     - python
     - setuptools-scm
     - scikit-build
+    - zlib
   run:
     - packaging
     - dataclasses  # [py<37]
