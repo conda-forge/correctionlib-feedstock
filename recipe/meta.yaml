@@ -34,6 +34,7 @@ requirements:
     - python
     - setuptools-scm
     - scikit-build
+    - zlib
   run:
     - packaging
     - dataclasses  # [py<37]
