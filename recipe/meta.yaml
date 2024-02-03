@@ -1,5 +1,5 @@
 {% set name = "correctionlib" %}
-{% set version = "2.4.0" %}
+{% set version = "2.5.0" %}
 
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/correctionlib-{{ version }}.tar.gz
-  sha256: 6d029c4bcbe4b6f0fadb3bd279a06da09c37e934a9a34804a4a9b41c8dc0b978
+  sha256: 1fc402754ea988176a24424e1956eccfee9ec8c84556ec13a481ca52829a7f80
   patches: setup.patch
 
 build:
@@ -37,12 +37,10 @@ requirements:
     - zlib
   run:
     - packaging
-    - dataclasses  # [py<37]
     - numpy >=1.13.3
-    - pydantic <2,>=1.7.3
+    - pydantic >=2
     - python
     - rich
-    - typing  # [py<35]
     - typing-extensions  # [py<38]
 
 test:
