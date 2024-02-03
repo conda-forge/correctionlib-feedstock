@@ -38,7 +38,7 @@ requirements:
   run:
     - packaging
     - numpy >=1.13.3
-    - pydantic >=1.7.3
+    - pydantic >=2
     - python
     - rich
     - typing-extensions  # [py<38]
