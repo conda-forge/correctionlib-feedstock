@@ -1,5 +1,5 @@
 {% set name = "correctionlib" %}
-{% set version = "2.5.0" %}
+{% set version = "2.6.0" %}
 
 
 package:
@@ -8,11 +8,11 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/correctionlib-{{ version }}.tar.gz
-  sha256: 1fc402754ea988176a24424e1956eccfee9ec8c84556ec13a481ca52829a7f80
+  sha256: 3268511c9061889647d08d5c6fdf099ce368edc13473faabb21cd2e523025dfd
   patches: setup.patch
 
 build:
-  number: 1
+  number: 0
   entry_points:
     - correction = correctionlib.cli:main
   script:
@@ -27,6 +27,7 @@ requirements:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - {{ compiler('cxx') }}
+    - {{ stdlib("c") }}
     - cmake
     - make  # [unix]
   host:
