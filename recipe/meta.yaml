@@ -7,12 +7,12 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/correctionlib-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/correctionlib-{{ version }}.tar.gz
   sha256: 701aaba9dfbb45ca3a7def29b80e744b3f179a9f9b4a10f05fa773e641d17ebe
   patches: setup.patch
 
 build:
-  number: 1
+  number: 2
   entry_points:
     - correction = correctionlib.cli:main
   script:
@@ -33,6 +33,7 @@ requirements:
   host:
     - pip
     - python
+    - setuptools
     - setuptools-scm
     - scikit-build
     - zlib
