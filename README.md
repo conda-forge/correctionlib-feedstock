@@ -3,11 +3,19 @@ About correctionlib-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/correctionlib-feedstock/blob/main/LICENSE.txt)
 
-Home: https://github.com/cms-nanoAOD/correctionlib
+Home: https://cms-nanoaod.github.io/correctionlib
 
 Package license: BSD-3-Clause
 
 Summary: A generic correction library
+
+Development: https://github.com/cms-nanoAOD/correctionlib
+
+The purpose of this library is to provide a well-structured JSON data format for
+a wide variety of ad-hoc correction factors encountered in a typical HEP analysis
+and a companion evaluation tool suitable for use in C++ and python programs. Here
+we restrict our definition of correction factors to a class of functions with scalar
+inputs that produce a scalar output.
 
 Current build status
 ====================
