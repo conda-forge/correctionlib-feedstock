@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: correctionlib
-  version: 2.6.4
+  version: "2.7.0"
 
 package:
   name: ${{ name|lower }}
@@ -10,17 +10,16 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/correctionlib-${{ version }}.tar.gz
-  sha256: 701aaba9dfbb45ca3a7def29b80e744b3f179a9f9b4a10f05fa773e641d17ebe
+  sha256: e4116fe64941bc107be1e0b57a6be713dea177b8df92fc21c32701b6a1110a6f
   patches: setup.patch
 
 build:
-  number: 3
+  number: 0
   script:
     # Travis ppc64le doesn't have enough memory to build in more than one thread.
     - if: not (linux and ppc64le)
       then: export CMAKE_BUILD_PARALLEL_LEVEL=${CPU_COUNT}
-    - if: linux and ppc64le
-      then: export CMAKE_BUILD_PARALLEL_LEVEL=1
+      else: export CMAKE_BUILD_PARALLEL_LEVEL=1
     - ${{ PYTHON }} -m pip install . -vv
   python:
     entry_points:
@@ -29,9 +28,9 @@ build:
 requirements:
   build:
     - if: build_platform != target_platform
-      then: python
-    - if: build_platform != target_platform
-      then: cross-python_${{ target_platform }}
+      then:
+        - python
+        - cross-python_${{ target_platform }}
     - ${{ compiler('cxx') }}
     - ${{ stdlib("c") }}
     - cmake
