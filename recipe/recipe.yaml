@@ -43,13 +43,14 @@ requirements:
     - if: python_version < '3.8'
       then: typing-extensions
 
-test:
-  imports:
-    - correctionlib
-  commands:
+tests:
+  - python:
+    imports:
+      - correctionlib
+  - commands:
     - pip check
     - correction --help
-  requires:
+  - requires:
     - pip
 
 about:
