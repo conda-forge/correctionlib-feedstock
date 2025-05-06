@@ -11,7 +11,6 @@ package:
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/correctionlib-${{ version }}.tar.gz
   sha256: e4116fe64941bc107be1e0b57a6be713dea177b8df92fc21c32701b6a1110a6f
-  patches: setup.patch
 
 build:
   number: 0
@@ -33,15 +32,11 @@ requirements:
         - cross-python_${{ target_platform }}
     - ${{ compiler('cxx') }}
     - ${{ stdlib("c") }}
-    - cmake
-    - if: unix
-      then: make
+    - setuptools-scm
+    - scikit-build-core
   host:
     - pip
     - python
-    - setuptools
-    - setuptools-scm
-    - scikit-build
     - zlib
   run:
     - packaging
