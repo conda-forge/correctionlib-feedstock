@@ -13,7 +13,7 @@ source:
   sha256: e4116fe64941bc107be1e0b57a6be713dea177b8df92fc21c32701b6a1110a6f
 
 build:
-  number: 0
+  number: 1
   script:
     # Travis ppc64le doesn't have enough memory to build in more than one thread.
     - if: not (linux and ppc64le)
