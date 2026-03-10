@@ -15,10 +15,6 @@ source:
 build:
   number: 0
   script:
-    # Travis ppc64le doesn't have enough memory to build in more than one thread.
-    - if: not (linux and ppc64le)
-      then: export CMAKE_BUILD_PARALLEL_LEVEL=${CPU_COUNT}
-      else: export CMAKE_BUILD_PARALLEL_LEVEL=1
     - ${{ PYTHON }} -m pip install . -vv
   python:
     entry_points:
