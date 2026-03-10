@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: correctionlib
-  version: "2.7.0"
+  version: "2.8.0"
 
 package:
   name: ${{ name|lower }}
@@ -10,15 +10,11 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/correctionlib-${{ version }}.tar.gz
-  sha256: e4116fe64941bc107be1e0b57a6be713dea177b8df92fc21c32701b6a1110a6f
+  sha256: 1b95eb18cf67e014b0d4bd0bc991b132a0c9ab84db4230853b5687b0abb1893b
 
 build:
   number: 0
   script:
-    # Travis ppc64le doesn't have enough memory to build in more than one thread.
-    - if: not (linux and ppc64le)
-      then: export CMAKE_BUILD_PARALLEL_LEVEL=${CPU_COUNT}
-      else: export CMAKE_BUILD_PARALLEL_LEVEL=1
     - ${{ PYTHON }} -m pip install . -vv
   python:
     entry_points:
