@@ -13,7 +13,7 @@ source:
   sha256: 9c7479a7eaa4ba9061b18557b7284c0826939a40daadc8b23638778bf46e6d73
 
 build:
-  number: 0
+  number: 1
   script:
     - ${{ PYTHON }} -m pip install . -vv
   python:
@@ -28,7 +28,8 @@ requirements:
         - cross-python_${{ target_platform }}
     - ${{ compiler('cxx') }}
     - ${{ stdlib("c") }}
-    - cmake
+    - cmake<4.4
+    - ninja
     - if: unix
       then: make
   host:
